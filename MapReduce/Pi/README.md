@@ -1,15 +1,20 @@
 
 # Description
 
-* Register system is used by almost application. It is normally the first step to use the application.
-* We use Python Web Server implement a Register system. 
-* We also want provide this system to remote access.
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/194803849-7c4c723f-81a1-48ef-b068-12dd25496823.png">
 
-# Related Theory
-* Simple HTTP Server With CGI Scripts Enabled
-* Sending Emails With Python
-* Let anyone in the world to access your Web Server set up at home
-* Database Access with Python
+# Design
+
+* Step 1: Generate an input file to the Pi MapReduce program
+    * Step 1.1: Create a regular Java program which accepts two command line arguments.
+    * R: The radius
+    * N: The number of (x, y) pairs to create
+    The Java program then randomly generates N pairs of (x, y) and displays them on the standard output.
+  Step 1.2: Run the program created in Step 1.1 and save the result in a file. The file is the input to Step 2's Pi MapReduce program.
+
+* Step 2: Create a MapReduce program to calculate the numbers of inside darts and outside darts.
+* Step 3: Use the file generated in Step 1.2 as the input to execute the MapReduce program created in Step 2
+* Step 4: Calculate Pi in the driver program based on the numbers of inside darts and outside darts.
 
 # Implement
 
@@ -18,10 +23,10 @@
 * GCP Environment
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/194799644-6b303972-e90e-4fc4-821b-0b26e2df9a6d.png">
 
-* hadoop environment
+* Hadoop environment
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/194799724-14031ad3-43db-4f36-a668-faf70a279365.png">
 
-* java environment
+* Java environment
 
 ## Prepare input data
 ```
@@ -104,6 +109,6 @@ Radius = 200
 <img width="700" alt="image" src="https://user-images.githubusercontent.com/93315926/194802159-668eb99d-39c7-4feb-b0ee-1921e827bf41.png">
 
 ## Detail Design Presentation
-[Registration_System_Ling_Chen](https://docs.google.com/presentation/d/1SfhsLRsk71G_YDLw-eBnDyk6nwd0qdZ1rLrxOv_LQGE/edit#slide=id.g25f6af9dd6_0_0)
+[Pi Calculation_Ling_Chen](https://docs.google.com/presentation/d/1SfhsLRsk71G_YDLw-eBnDyk6nwd0qdZ1rLrxOv_LQGE/edit#slide=id.g25f6af9dd6_0_0)
 
-
+# Appendix
