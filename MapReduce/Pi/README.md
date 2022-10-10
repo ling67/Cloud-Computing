@@ -15,23 +15,13 @@
 
 ## Requirment
 
-* GCP
-<img width="1498" alt="image" src="https://user-images.githubusercontent.com/93315926/194799644-6b303972-e90e-4fc4-821b-0b26e2df9a6d.png">
+* GCP Environment
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/194799644-6b303972-e90e-4fc4-821b-0b26e2df9a6d.png">
 
 * hadoop environment
-<img width="899" alt="image" src="https://user-images.githubusercontent.com/93315926/194799724-14031ad3-43db-4f36-a668-faf70a279365.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/194799724-14031ad3-43db-4f36-a668-faf70a279365.png">
 
-## Setup passphraseless ssh
-Now check that you can ssh to the localhost without a passphrase:
-```
-  $ ssh localhost
-```
-If you cannot ssh to localhost without a passphrase, execute the following commands:
-```
-  $ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-  $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-  $ chmod 0600 ~/.ssh/authorized_keys
-```
+* java environment
 
 ## Prepare input data
 ```
@@ -44,20 +34,39 @@ If you cannot ssh to localhost without a passphrase, execute the following comma
 
 Input data will store in PiCalculationInput
 
+## Setup passphraseless ssh
+Now check that you can ssh to the localhost without a passphrase:
+```
+  $ cd hadoop-3.3.4/
+  $ ssh localhost
+```
+If you cannot ssh to localhost without a passphrase, execute the following commands:
+```
+  $ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+  $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+  $ chmod 0600 ~/.ssh/authorized_keys
+```
+
 ## Make the HDFS directories required to execute MapReduce jobs(Copy input data to HDFS)
 ```
+  $ cd ..
+  $ cd hadoop-3.3.4/
+  $ bin/hdfs namenode -format
+  $ sbin/start-dfs.sh
+  $ wget http://localhost:9870/
   $ bin/hdfs dfs -mkdir /user
   $ bin/hdfs dfs -mkdir /user/lchen
   $ bin/hdfs dfs -mkdir /user/lchen/picalculate
   $ bin/hdfs dfs -mkdir /user/lchen/picalculate/input
   $ bin/hdfs dfs -put ../PiCalculation/PiCalculationInput /user/lchen/picalculate/input
 ```
+> If you can not copy input into hadoop dictionary, please restart the virtual machine.
 
 ## Prepare code
 
 * Build PiCalculation java file
 ```
-  $ cd hadoop
+  $ cd /hadoop-3.3.4
   $ vi PiCalculation.java      
 ```
 
