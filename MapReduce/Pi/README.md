@@ -80,13 +80,13 @@ If you cannot ssh to localhost without a passphrase, execute the following comma
 
 * Execute
 ```
-  $ bin/hadoop jar wc.jar PiCalculation /user/lchen/picalculate/input /user/lchen/picalculate/output3
+  $ bin/hadoop jar wc.jar PiCalculation /user/lchen/picalculate/input /user/lchen/picalculate/output5
 ```
 
 * Output
 ```
-  $ bin/hdfs dfs -ls /user/lchen/picalculate/output3
-  $ bin/hdfs dfs -cat /user/lchen/picalculate/output3/part-r-00000 
+  $ bin/hdfs dfs -ls /user/lchen/picalculate/output5
+  $ bin/hdfs dfs -cat /user/lchen/picalculate/output5/part-r-00000 
 ```
 
 * Stop
