@@ -96,6 +96,11 @@ If you cannot ssh to localhost without a passphrase, execute the following comma
 
 ## Test Result
 
+Test Case:
+
+How many random numbers to generate: 1000000
+Radius = 200
+
 <img width="700" alt="image" src="https://user-images.githubusercontent.com/93315926/194802159-668eb99d-39c7-4feb-b0ee-1921e827bf41.png">
 
 ## Detail Design Presentation
