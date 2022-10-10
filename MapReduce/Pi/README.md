@@ -13,6 +13,14 @@
 
 # Implement
 
+## Requirment
+
+* GCP
+<img width="1498" alt="image" src="https://user-images.githubusercontent.com/93315926/194799644-6b303972-e90e-4fc4-821b-0b26e2df9a6d.png">
+
+* hadoop environment
+<img width="899" alt="image" src="https://user-images.githubusercontent.com/93315926/194799724-14031ad3-43db-4f36-a668-faf70a279365.png">
+
 ## Setup passphraseless ssh
 Now check that you can ssh to the localhost without a passphrase:
 ```
