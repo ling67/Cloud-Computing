@@ -161,12 +161,14 @@ The result is same as we calculate by hand.
 
 Steps:
 1.Create a Cloud Storage bucket 
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199094153-6fd7c07b-5c74-462d-a06b-69f64cf0fc14.png">
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/199094153-6fd7c07b-5c74-462d-a06b-69f64cf0fc14.png">
 
 2.Create a Dataproc cluster 
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/199095204-53426a89-84bc-414c-a9af-ff0e7cf5d1eb.png">
 
 3. Connecting to the Master Node using Secure Shell (ssh) 
 
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/199095683-474bd92d-671a-4922-8b7a-0d538ee92193.png">
 
 ## Do this question using Scala
 
