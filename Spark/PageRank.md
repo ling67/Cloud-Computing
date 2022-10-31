@@ -150,9 +150,14 @@ The result is same as we calculate by hand.
 * Ten times iteration
 <img width="623" alt="image" src="https://user-images.githubusercontent.com/93315926/199090085-c8bb2283-0207-43bb-bad1-e183114a3d1d.png">
 
+## Shutting down the Cluster 
+ 
+
 # PageRank + Scala + GCP
 
 ## Set up Scala on GCP
+
+Steps:
 
 
 
