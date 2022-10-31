@@ -122,9 +122,10 @@ hdfs dfs -ls hdfs:///mydata
 
 3. Prepare the program
 
+The code is on the above py file.
+```
 vi pagerank.py
-
-See in the above py file.
+```
 
 4. Running the program with Pyspark 
 
@@ -152,6 +153,9 @@ The result is same as we calculate by hand.
 # PageRank + Scala + GCP
 
 ## Set up Scala on GCP
+
+
+
 
 ## Do this question using Scala
 
