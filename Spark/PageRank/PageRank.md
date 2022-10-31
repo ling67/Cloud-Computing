@@ -157,12 +157,22 @@ The result is same as we calculate by hand.
 
 ## Set up Scala on GCP
 
+> The detailed steps see Week 5 Homework 2
+
 Steps:
+1.Create a Cloud Storage bucket 
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199094153-6fd7c07b-5c74-462d-a06b-69f64cf0fc14.png">
 
+2.Create a Dataproc cluster 
 
+3. Connecting to the Master Node using Secure Shell (ssh) 
 
 
 ## Do this question using Scala
+
+1.Prepare data
+
+
 
 
 
