@@ -93,23 +93,26 @@ PageRank	(C) =	1	– 0.85	+	0.85	*	1.075	=	1.06375
 
 2. Prepare Data in HDFS 
 
+* Manual input data
+```
+vi pagerank_data.txt
+```
+
+Data
+```
+A B
+A C
+B C
+C A
+```
+
 * create a directory (folder) to store the data: 
 ```
 hdfs dfs -mkdir hdfs:///mydata 
 ```
 
-* Manual import data
 ```
-hdfs dfs vi hdfs:///mydata/pagerank_data.txt
-```
-
-```
-B C
-B A
-C A
-D A
-D B
-D C
+hdfs dfs -put pagerank_data.txt hdfs:///mydata
 ```
 
 * To verify that the file is indeed located in the mydata folder, run the following command:  
@@ -119,11 +122,32 @@ hdfs dfs -ls hdfs:///mydata
 
 3. Prepare the program
 
+vi pagerank.py
+
 See in the above py file.
 
 4. Running the program with Pyspark 
 
-Simply type pyspark at the shell prompt, input your program.
+```
+spark-submit pagerank.py hdfs:///mydata/pagerank_data.txt 1
+```
+
+> 1 is the iteration count
+
+## Result
+
+* First iteration
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/93315926/199089459-b1556744-399b-481c-9706-57639d5e5964.png">
+
+The result is same as we calculate by hand.
+
+* Second iteration
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/93315926/199089698-20f3bde0-9087-4cbc-aa13-d605ae3245c2.png">
+
+The result is same as we calculate by hand.
+
+* Ten times iteration
+<img width="623" alt="image" src="https://user-images.githubusercontent.com/93315926/199090085-c8bb2283-0207-43bb-bad1-e183114a3d1d.png">
 
 # PageRank + Scala + GCP
 
