@@ -139,9 +139,6 @@ The result is same as we calculate by hand.
 * Ten times iteration
 <img width="623" alt="image" src="https://user-images.githubusercontent.com/93315926/199090085-c8bb2283-0207-43bb-bad1-e183114a3d1d.png">
 
-## 3.4 Shutting down the Cluster 
- 
-
 # 4. PageRank + Scala + GCP
 
 ## 4.1 Set up Scala on GCP
@@ -211,3 +208,9 @@ spark-shell
 * Ten times iteration
 
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199161098-76428030-9256-4a2d-9d5a-7e65e6fa7898.png">
+
+# 5 Shutting down the Cluster 
+ 
+# 6. Detail Design Presentation 
+
+[PageRank using Spark](https://docs.google.com/presentation/d/1lProy-vwvsE6qNtg2iTOGM1fvHHBbh1QKhV9KT7d2xU/edit#slide=id.g25f6af9dd6_0_0)
