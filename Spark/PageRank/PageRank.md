@@ -127,17 +127,17 @@ spark-submit pagerank.py hdfs:///mydata/pagerank_data.txt 1
 ## 3.3 Result
 
 * First iteration
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/93315926/199089459-b1556744-399b-481c-9706-57639d5e5964.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199089459-b1556744-399b-481c-9706-57639d5e5964.png">
 
 The result is same as we calculate by hand.
 
 * Second iteration
-<img width="400" alt="image" src="https://user-images.githubusercontent.com/93315926/199089698-20f3bde0-9087-4cbc-aa13-d605ae3245c2.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199089698-20f3bde0-9087-4cbc-aa13-d605ae3245c2.png">
 
 The result is same as we calculate by hand.
 
 * Ten times iteration
-<img width="623" alt="image" src="https://user-images.githubusercontent.com/93315926/199090085-c8bb2283-0207-43bb-bad1-e183114a3d1d.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199090085-c8bb2283-0207-43bb-bad1-e183114a3d1d.png">
 
 # 4. PageRank + Scala + GCP
 
@@ -147,14 +147,14 @@ The result is same as we calculate by hand.
 
 Steps:
 1. Create a Cloud Storage bucket 
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/199094153-6fd7c07b-5c74-462d-a06b-69f64cf0fc14.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199094153-6fd7c07b-5c74-462d-a06b-69f64cf0fc14.png">
 
 2. Create a Dataproc cluster 
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/199095204-53426a89-84bc-414c-a9af-ff0e7cf5d1eb.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199095204-53426a89-84bc-414c-a9af-ff0e7cf5d1eb.png">
 
 3. Connecting to the Master Node using Secure Shell (ssh) 
 
-<img width="600" alt="image" src="https://user-images.githubusercontent.com/93315926/199095683-474bd92d-671a-4922-8b7a-0d538ee92193.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199095683-474bd92d-671a-4922-8b7a-0d538ee92193.png">
 
 4. install scala
 ```
@@ -210,6 +210,9 @@ spark-shell
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199161098-76428030-9256-4a2d-9d5a-7e65e6fa7898.png">
 
 # 5 Shutting down the Cluster 
+ 
+ <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199174391-dc21b7f3-20ea-434f-a494-98d8507fae5b.png">
+
  
 # 6. Detail Design Presentation 
 
