@@ -47,11 +47,11 @@ Steps:
 1. Enable the Google Cloud Compute Engine API
 2. Create, Configure and Launch a Google Cloud Dataproc cluster
 
-<img width="918" alt="image" src="https://user-images.githubusercontent.com/93315926/199079606-3a427655-e31a-4ad8-bce1-83ceb9a117cd.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199079606-3a427655-e31a-4ad8-bce1-83ceb9a117cd.png">
 
 3. Connecting to the Master Node using Secure Shell (ssh) 
 
-<img width="612" alt="image" src="https://user-images.githubusercontent.com/93315926/199079880-20504e81-56ec-4592-b767-7aefe4efabfd.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199079880-20504e81-56ec-4592-b767-7aefe4efabfd.png">
 
 > Detail Steps See Week 4 Homework 2
 
