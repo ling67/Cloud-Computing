@@ -37,64 +37,67 @@ Reference:[Google Colab Tutorials](https://www.tutorialspoint.com/google_colab/w
 
 # Run the py file saved on GCP
 
-##1.Set up PySpark on GCP
+## 1.Set up PySpark on GCP
 
 Steps:
 1. Enable the Google Cloud Compute Engine API
 2. Create, Configure and Launch a Google Cloud Dataproc cluster
 
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199079606-3a427655-e31a-4ad8-bce1-83ceb9a117cd.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/203155230-58a0dec9-2fcf-4b13-b362-bcbff8cf150e.png">
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/203155584-2eb65963-42af-45ef-b412-01b28901dcf9.png">
 
 3. Connecting to the Master Node using Secure Shell (ssh) 
 
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199079880-20504e81-56ec-4592-b767-7aefe4efabfd.png">
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/203155868-77a2ba38-54d9-4e03-854a-d52ad995b4b5.png">
+
 
 > Detail Steps See Week 4 Homework 2
 
-##2. Prepare Data in HDFS 
+## 2. Prepare Data in HDFS 
 
-* Manual input data
-```
-vi pagerank_data.txt
-```
+* movies.csv
+* rating.csv
+* tags.csv
+* recommendation_engine_movielens.py
 
-Data
-```
-A B
-A C
-B C
-C A
-```
+1.Upload movies.csv and ratings.csv files at GCP
 
-* create a directory (folder) to store the data: 
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/203156392-caf40188-b798-4423-8679-654e2d410801.png">
+
+2. create a directory (folder) to store the data: 
+
 ```
 hdfs dfs -mkdir hdfs:///mydata 
-```
-
-```
-hdfs dfs -put pagerank_data.txt hdfs:///mydata
+hdfs dfs -put movies.csv hdfs:///mydata
+hdfs dfs -put ratings.csv hdfs:///mydata
 ```
 
 * To verify that the file is indeed located in the mydata folder, run the following command:  
 ```
 hdfs dfs -ls hdfs:///mydata 
 ```
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/203157136-facc897d-57ad-44a7-84e0-56b202eb1b6e.png">
 
-##3.Prepare the program
+## 3.Prepare the program
 
-The code is on the above py file.
+The code is on the above py file. Upload the file to GCP.
 ```
-vi pagerank.py
+vi recommendation_engine_movielens.py
+```
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/203157622-6e75f911-2518-466a-88da-bc3ba31aa756.png">
+
+## 4.Running the program with Pyspark 
+
+```
+spark-submit recommendation_engine_movielens.py
 ```
 
-##4.Running the program with Pyspark 
+## 5.Result
 
-```
-spark-submit pagerank.py
-```
+<img width="357" alt="image" src="https://user-images.githubusercontent.com/93315926/203158277-aeada675-0462-489f-82b2-840f0876f31c.png">
 
-##5.Result
-
+<img width="319" alt="image" src="https://user-images.githubusercontent.com/93315926/203158307-3178e6b5-35ce-4de2-a687-0907d024bede.png">
 
 # Shutting down the Cluster 
  
@@ -102,4 +105,4 @@ spark-submit pagerank.py
 
 # Detail Design Presentation 
 
-[PageRank using Spark](https://docs.google.com/presentation/d/1lProy-vwvsE6qNtg2iTOGM1fvHHBbh1QKhV9KT7d2xU/edit#slide=id.g25f6af9dd6_0_0)
+[Movie Recommendation System](https://docs.google.com/presentation/d/1lProy-vwvsE6qNtg2iTOGM1fvHHBbh1QKhV9KT7d2xU/edit#slide=id.g25f6af9dd6_0_0)
