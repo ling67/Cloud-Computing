@@ -95,9 +95,7 @@ spark-submit recommendation_engine_movielens.py
 
 ## 5.Result
 
-<img width="357" alt="image" src="https://user-images.githubusercontent.com/93315926/203158277-aeada675-0462-489f-82b2-840f0876f31c.png">
-
-<img width="319" alt="image" src="https://user-images.githubusercontent.com/93315926/203158307-3178e6b5-35ce-4de2-a687-0907d024bede.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/203168655-2aff6cf7-50e5-4b53-b29f-fc90dabb6f24.png">
 
 # Shutting down the Cluster 
  
@@ -105,4 +103,5 @@ spark-submit recommendation_engine_movielens.py
 
 # Detail Design Presentation 
 
-[Movie Recommendation System](https://docs.google.com/presentation/d/1lProy-vwvsE6qNtg2iTOGM1fvHHBbh1QKhV9KT7d2xU/edit#slide=id.g25f6af9dd6_0_0)
+[Movie Recommendation System](https://docs.google.com/presentation/d/1lQb6fVTNrRmfF3GYxRXxFfJCima171QhtwF7ISW0zXg/edit#slide=id.p)
+
