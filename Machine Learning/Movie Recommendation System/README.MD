@@ -99,7 +99,7 @@ spark-submit recommendation_engine_movielens.py
 
 # Shutting down the Cluster 
  
- <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/199174391-dc21b7f3-20ea-434f-a494-98d8507fae5b.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/203174151-f4e467cb-4602-43ad-9df6-a1ffc19143e9.png">
 
 # Detail Design Presentation 
 
