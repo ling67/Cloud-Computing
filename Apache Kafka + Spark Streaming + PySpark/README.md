@@ -1,6 +1,6 @@
 # Kafka + Spark Streaming + PySpark
 
-## Introduction
+## 1. Introduction
 
 Real-time data ingesting is a common problem in real-time analytics, because in a platform such as e-commerce, active users in a given time and the number of events created by each active user are many. Hence, recommendations (i.e., predictions) for each event or groups of events are expected to be near real-time.
 
@@ -10,13 +10,13 @@ In this project, we want use kafka and Spark Streaming to work together.
 
 ![image](https://user-images.githubusercontent.com/93315926/205775026-2681cd4d-f970-4e4a-9158-4e58b56162e1.png)
 
-## Steps
+## 2. Steps
 1. Discuss the steps to perform to setup Apache Spark in a Linux environment.
 2. Starting Kafka (for more details, please refer to this article).
 3. Creating a PySpark app for consume and process the events and write back to Kafka.
 4. Steps to produce and consume events using Kafka-Python.
 
-## Environment install
+## 3. Environment install
 
 ### Create GCP vitural machine 
 Reference week 4 homework 2.
@@ -45,16 +45,21 @@ $ tar -xvf kafka_2.12-3.3.1.tgz
 ```
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205801575-d1fd1817-006e-4957-92d9-f3d6a2b0a9f2.png">
 
-## Setup Spark
+### Setup Spark
 ```
 $ pip3 install msgpack
 $ pip3 install kafka-python
-if pip3 command not found,
+```
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205808538-c65e2bbf-f463-426a-8511-7ce3bf78cf16.png">
+
+if pip3 command not found:(if it works, you don't need to do it again.)
+```
 $ sudo apt install python3-pip
 $ wget https://repo1.maven.org/maven2/org/apache/spark/spark-streaming-kafka-0-8-assembly_2.11/2.3.2/spark-streaming-kafka-0-8-assembly_2.11-2.3.2.jar  （感觉不用）
 ```
 
-## Check kafka is working, use input_event topic as example
+## 4. Check kafka is working, use input_event topic as example
 
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205804044-ba9d9d3a-0fa9-434b-8833-c20940af18cd.png">
 
@@ -65,24 +70,22 @@ $ bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205801936-68f18e1d-9815-4935-bad0-299b2d9cdce3.png">
 
-Step 2. Start Kafka broker(Keep this terminal open: terminal 1)
+Step 2. Start Kafka broker(Keep this terminal open: terminal 2)
 ```
 $ cd kafka_2.12-3.3.1/
 $ bin/kafka-server-start.sh config/server.properties
 ```
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205802349-56ed3163-1629-41a5-9054-9d17c157f37f.png">
 
-Step 3: Create two Kafka Topics (input_event and output_event)
+Step 3: Create one Kafka Topics (input_event)
 ```
 $ cd kafka_2.12-3.3.1/
 $ bin/kafka-topics.sh --create --topic input_event --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
-$ bin/kafka-topics.sh --create --topic output_event --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
 ```
 
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205804044-ba9d9d3a-0fa9-434b-8833-c20940af18cd.png">
 
-
-Step 4.Create consumer.py, then run it (terminal 3)
+Step 4: Create consumer.py, then run it (terminal 3)
 ```
 $ vi consumer.py
 $ python3 consumer.py
@@ -93,10 +96,10 @@ from kafka import KafkaConsumer
 
 consumer = KafkaConsumer('input_event', bootstrap_servers=['localhost:9092'])
 for msg in consumer:
-    print(msg.value)
+    print(msg)
 ```
 
-Step 5.Create producer.py, then run it(terminal 4)
+Step 5: Create producer.py, then run it(terminal 4)
 ```
 $ vi producer.py
 $ python3 producer.py
@@ -104,40 +107,39 @@ $ python3 producer.py
 
 ```producer.py code
 from kafka import KafkaProducer
-
-producer = KafkaProducer(bootstrap_servers='localhost:9092', value_serializer=str.encode, key_serializer=str.encode)
-event_stream_key = 'product_list'
-event_stream_value = 'product1 product2 product3 product1'
-producer.send('input_event', key = event_stream_key, value = event_stream_value)
+producer = KafkaProducer(bootstrap_servers='localhost:9092')
+producer.send('input_event', b'(1, Main Menu), (2, Phone), (3, Smart Phone), (4, iPhone)')
+producer.close()
 ```
 
-Step 6.Result
+Step 6: Result
 
-图
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/205826199-d0236087-b38f-40c0-a9b1-818bed79d2d5.png">
 
-## implement
+## Implement
+
+Step 1: Create two Kafka Topics (input_event and output_event)
+```
+$ cd kafka_2.12-3.3.1/
+$ bin/kafka-topics.sh --create --topic input_event --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+$ bin/kafka-topics.sh --create --topic output_event --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+```
 
 Now, we have two topic: input_event, output_event
 
-Runing sequence:
-
-1. producer.py
-2. consumer.py
-3. spark_processor.py
-
-In terminal 1(Start Kafka Zookeeper):
+Step 2: In terminal 1(Start Kafka Zookeeper):
 ```
 $ cd kafka_2.12-3.3.1/
 $ bin/zookeeper-server-start.sh config/zookeeper.properties
 ```
 
-In terminal 2(Start Kafka broker):
+Step 3: In terminal 2(Start Kafka broker):
 ```
 $ cd kafka_2.12-3.3.1/
 $ bin/kafka-server-start.sh config/server.properties
 ```
 
-In terminal 3, create consumer.py, then run it:
+Step 4: In terminal 3, create consumer.py, then run it:
 ```
 $ vi consumer.py
 $ python3 consumer.py
@@ -146,10 +148,10 @@ from kafka import KafkaConsumer
 
 consumer = KafkaConsumer('output_event', bootstrap_servers=['localhost:9092'])
 for msg in consumer:
-    print(msg.value)
+    print(msg)
 ```
 
-In terminal 4, create producer.py, then run it:
+Step 5: In terminal 4, create producer.py, then run it:
 ```
 $ vi producer.py
 $ python3 producer.py
@@ -183,6 +185,12 @@ $ ./spark/bin/spark-submit
 --master spark://34.70.211.224:7077    
 --deploy-mode client pyspark_script/spark_processor.py
 ```
+
+Runing sequence:
+
+1. producer.py
+2. consumer.py
+3. spark_processor.py
 
 ## Result
 
