@@ -45,29 +45,6 @@ $ tar -xvf kafka_2.12-3.3.1.tgz
 ```
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205801575-d1fd1817-006e-4957-92d9-f3d6a2b0a9f2.png">
 
-Step 2. Start Kafka Zookeeper (Keep this terminal open)
-```
-$ cd kafka_2.12-3.3.1/
-$ bin/zookeeper-server-start.sh config/zookeeper.properties
-```
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205801936-68f18e1d-9815-4935-bad0-299b2d9cdce3.png">
-
-Step 3. Start Kafka broker(Keep this terminal open)
-```
-$ cd kafka_2.12-3.3.1/
-$ bin/kafka-server-start.sh config/server.properties
-```
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205802349-56ed3163-1629-41a5-9054-9d17c157f37f.png">
-
-Step 4: Create two Kafka Topics (input_event and output_event)
-
-```
-$ bin/kafka-topics.sh --create --topic input_event --zookeeper localhost:9092 --partitions 3 --replication-factor 1
-$ bin/kafka-topics.sh --create --topic output_event --zookeeper localhost:9092 --partitions 3 --replication-factor 1
-```
-
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205804044-ba9d9d3a-0fa9-434b-8833-c20940af18cd.png">
-
 ## Setup Spark
 ```
 $ pip3 install msgpack
@@ -77,13 +54,35 @@ $ sudo apt install python3-pip
 $ wget https://repo1.maven.org/maven2/org/apache/spark/spark-streaming-kafka-0-8-assembly_2.11/2.3.2/spark-streaming-kafka-0-8-assembly_2.11-2.3.2.jar  （感觉不用）
 ```
 
-## Check kafka is working, use input_event as example
+## Check kafka is working, use input_event topic as example
 
 <img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205804044-ba9d9d3a-0fa9-434b-8833-c20940af18cd.png">
 
-1. runing zookeeper and ~
+Step 1. Start Kafka Zookeeper (Keep this terminal open: terminal 1)
+```
+$ cd kafka_2.12-3.3.1/
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205801936-68f18e1d-9815-4935-bad0-299b2d9cdce3.png">
 
-2.Create consumer.py, then run it (terminal 3)
+Step 2. Start Kafka broker(Keep this terminal open: terminal 1)
+```
+$ cd kafka_2.12-3.3.1/
+$ bin/kafka-server-start.sh config/server.properties
+```
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205802349-56ed3163-1629-41a5-9054-9d17c157f37f.png">
+
+Step 3: Create two Kafka Topics (input_event and output_event)
+```
+$ cd kafka_2.12-3.3.1/
+$ bin/kafka-topics.sh --create --topic input_event --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+$ bin/kafka-topics.sh --create --topic output_event --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+```
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/205804044-ba9d9d3a-0fa9-434b-8833-c20940af18cd.png">
+
+
+Step 4.Create consumer.py, then run it (terminal 3)
 ```
 $ vi consumer.py
 $ python3 consumer.py
@@ -97,7 +96,7 @@ for msg in consumer:
     print(msg.value)
 ```
 
-3.Create producer.py, then run it(terminal 4)
+Step 5.Create producer.py, then run it(terminal 4)
 ```
 $ vi producer.py
 $ python3 producer.py
@@ -111,6 +110,10 @@ event_stream_key = 'product_list'
 event_stream_value = 'product1 product2 product3 product1'
 producer.send('input_event', key = event_stream_key, value = event_stream_value)
 ```
+
+Step 6.Result
+
+图
 
 ## implement
 
