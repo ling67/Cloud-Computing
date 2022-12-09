@@ -179,7 +179,7 @@ $ spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.1.3
 
 Error: It is not working. Spark-streaming-kafka-0-10 doesn't support python, spark-streaming-kafka-0-8 supports python, but spark version need roll back to 2.* version. Please refer to this link for details.
 
-## Analyse
+## 6.Analyse
 
 Now, we have two method:
 1. install 2.* version spark to run the program. It is not working
@@ -193,6 +193,10 @@ Then I try the second method, it still have some problem, I can't receive the da
 
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/206615819-1bfea664-52a6-45b7-933b-f010265c8ef5.png">
 
-## 
+## 7.Detail Design Presentation 
+
+[spark streaming + kafka](https://docs.google.com/presentation/d/1XQmmGCZvorbFCIWvEXteCA6X_Iz3h2v-xtbiSIRiGlo/edit#slide=id.p)
+
+
 
 
