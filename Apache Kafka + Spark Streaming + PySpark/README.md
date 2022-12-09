@@ -116,9 +116,21 @@ Step 6: Result
 
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/205826199-d0236087-b38f-40c0-a9b1-818bed79d2d5.png">
 
-## Implement
+## 5. Implement Kafka + Spark Streaming + PySpark
 
-Step 1: Create two Kafka Topics (input_event and output_event)
+Step 1: In terminal 1(Start Kafka Zookeeper):
+```
+$ cd kafka_2.12-3.3.1/
+$ bin/zookeeper-server-start.sh config/zookeeper.properties
+```
+
+Step 2: In terminal 2(Start Kafka broker):
+```
+$ cd kafka_2.12-3.3.1/
+$ bin/kafka-server-start.sh config/server.properties
+```
+
+Step 3: Create two Kafka Topics (input_event and output_event)
 ```
 $ cd kafka_2.12-3.3.1/
 $ bin/kafka-topics.sh --create --topic input_event --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
@@ -126,18 +138,6 @@ $ bin/kafka-topics.sh --create --topic output_event --bootstrap-server localhost
 ```
 
 Now, we have two topic: input_event, output_event
-
-Step 2: In terminal 1(Start Kafka Zookeeper):
-```
-$ cd kafka_2.12-3.3.1/
-$ bin/zookeeper-server-start.sh config/zookeeper.properties
-```
-
-Step 3: In terminal 2(Start Kafka broker):
-```
-$ cd kafka_2.12-3.3.1/
-$ bin/kafka-server-start.sh config/server.properties
-```
 
 Step 4: In terminal 3, create consumer.py, then run it:
 ```
@@ -164,12 +164,7 @@ event_stream_value = 'product1 product2 product3 product1'
 producer.send('input_event', key = event_stream_key, value = event_stream_value)
 ```
 
-In terminal 5
-```
-$ start-master.sh
-```
-
-In terminal 6, running spark_processor.py
+In terminal 5, running spark_processor.py
 
 spark_processor.py will process events and write back to Kafka:
 1.consume the message from input_event topic 
@@ -179,20 +174,25 @@ spark_processor.py will process events and write back to Kafka:
 Reference: code in 上面
 
 ```
-$ ./spark/bin/spark-submit 
---jars myrun/spark-streaming-kafka-0-10_2.12-3.3.1.jar 
---packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.3.1
---master spark://34.70.211.224:7077    
---deploy-mode client pyspark_script/spark_processor.py
+$ spark-submit --packages org.apache.spark:spark-streaming-kafka-0-10_2.12:3.1.3,org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.3 --deploy-mode client spark_processor.py
 ```
 
-Runing sequence:
+Error: It is not working. Spark-streaming-kafka-0-10 doesn't support python, spark-streaming-kafka-0-8 supports python, but spark version need roll back to 2.* version. Please refer to this link for details.
 
-1. producer.py
-2. consumer.py
-3. spark_processor.py
+## Analyse
 
-## Result
+Now, we have two method:
+1. install 2.* version spark to run the program. It is not working
+2. Change the spark_processor.py code to receiving data from kafka. https://spark.apache.org/docs/latest/structured-streaming-kafka-integration.html
 
+Then I try the second method, it still have some problem, I can't receive the data from kafka.
+
+<img width="500" alt="image" src="https://user-images.githubusercontent.com/93315926/206615779-467f263e-bd22-4f7d-86f1-0fb741a2d701.png">
+
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/206615600-d7742a82-8fe0-447e-90d9-80293e45a54c.png">
+
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/93315926/206615819-1bfea664-52a6-45b7-933b-f010265c8ef5.png">
+
+## 
 
 
